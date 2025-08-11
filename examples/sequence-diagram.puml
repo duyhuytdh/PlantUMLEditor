@@ -1,0 +1,27 @@
+@startuml Basic Sequence Diagram
+title Basic Sequence Diagram Example
+
+actor User
+participant "Frontend\n(React)" as FE
+participant "Backend\n(Spring Boot)" as BE
+participant "PlantUML\nLibrary" as PL
+
+User -> FE: Enter PlantUML code
+activate FE
+
+FE -> BE: POST /api/plantuml/generate
+activate BE
+
+BE -> PL: Process diagram
+activate PL
+PL -> PL: Generate diagram
+PL --> BE: Return image/SVG
+deactivate PL
+
+BE --> FE: Return generated diagram
+deactivate BE
+
+FE --> User: Display diagram
+deactivate FE
+
+@enduml

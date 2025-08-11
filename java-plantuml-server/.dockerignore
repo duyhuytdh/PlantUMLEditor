@@ -1,0 +1,44 @@
+# Maven (excluding target with built JAR for prebuilt Dockerfile)
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# IDE
+.vscode
+.idea
+*.iws
+*.iml
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Logs
+logs
+*.log
+
+# Test results
+*.test
+*.coverage
+
+# Temporary files
+*.tmp
+*.temp
+
+# Source code (not needed for prebuilt)
+src/

@@ -1,0 +1,72 @@
+MIT License
+
+Copyright (c) 2025 PlantUML Editor Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+
+THIRD-PARTY LICENSES
+
+This software incorporates components from third-party projects with compatible licenses:
+
+1. PlantUML (MIT License)
+   - Source: https://plantuml.com/
+   - License: MIT License (plantuml-mit variant)
+   - Copyright: PlantUML Development Team
+
+2. Spring Boot (Apache License 2.0)
+   - Source: https://spring.io/projects/spring-boot
+   - License: Apache License 2.0
+   - Copyright: VMware, Inc.
+
+3. React (MIT License)
+   - Source: https://reactjs.org/
+   - License: MIT License
+   - Copyright: Facebook, Inc. and its affiliates
+
+4. Monaco Editor (MIT License)
+   - Source: https://microsoft.github.io/monaco-editor/
+   - License: MIT License
+   - Copyright: Microsoft Corporation
+
+5. Tailwind CSS (MIT License)
+   - Source: https://tailwindcss.com/
+   - License: MIT License
+   - Copyright: Tailwind Labs, Inc.
+
+6. Vite (MIT License)
+   - Source: https://vitejs.dev/
+   - License: MIT License
+   - Copyright: Evan You & Vite Contributors
+
+7. TypeScript (Apache License 2.0)
+   - Source: https://www.typescriptlang.org/
+   - License: Apache License 2.0
+   - Copyright: Microsoft Corporation
+
+EXTERNAL DEPENDENCIES (not included in distribution):
+
+8. Graphviz (Common Public License 1.0)
+   - Source: https://graphviz.org/
+   - License: Common Public License Version 1.0
+   - Note: External dependency for state diagram rendering
+
+All third-party licenses are compatible with commercial use.
+For the full text of each license, see the respective project's documentation.

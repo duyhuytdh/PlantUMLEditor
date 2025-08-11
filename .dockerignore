@@ -1,0 +1,11 @@
+# Ignore development files
+node_modules/
+target/
+*.log
+.env.local
+.DS_Store
+.vscode/
+*.tmp
+
+# Ignore source files (only copy built artifacts)
+src/

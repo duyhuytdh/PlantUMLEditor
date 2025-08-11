@@ -1,0 +1,59 @@
+@startuml Class Diagram
+title PlantUML Editor - Class Diagram Example
+
+package "Frontend" {
+  class PlantUMLEditor {
+    -code: string
+    -diagram: string
+    +updateCode(code: string)
+    +generateDiagram()
+    +exportDiagram(format: string)
+  }
+  
+  class DiagramPreview {
+    -imageUrl: string
+    +render(imageData: string)
+    +refresh()
+  }
+  
+  class CodeEditor {
+    -content: string
+    +onChange(callback: Function)
+    +setValue(value: string)
+    +getValue(): string
+  }
+}
+
+package "Backend" {
+  class PlantUMLController {
+    +generateDiagram(request: DiagramRequest): DiagramResponse
+    +health(): HealthResponse
+  }
+  
+  class PlantUMLService {
+    -plantUMLSource: SourceStringReader
+    +generatePNG(code: string): byte[]
+    +generateSVG(code: string): string
+  }
+  
+  class DiagramRequest {
+    +code: string
+    +format: string
+  }
+  
+  class DiagramResponse {
+    +image: byte[]
+    +format: string
+    +success: boolean
+  }
+}
+
+PlantUMLEditor --> DiagramPreview
+PlantUMLEditor --> CodeEditor
+PlantUMLEditor ..> PlantUMLController : HTTP API
+
+PlantUMLController --> PlantUMLService
+PlantUMLController ..> DiagramRequest
+PlantUMLController ..> DiagramResponse
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml State Diagram
+title PlantUML Editor - Application States
+
+[*] --> Loading : Application Start
+
+Loading --> Ready : Dependencies Loaded
+Loading --> Error : Loading Failed
+
+Ready --> Editing : User Input
+Ready --> Generating : Generate Diagram
+
+Editing --> Ready : Input Complete
+Editing --> Generating : Auto Generate
+
+Generating --> DisplayingDiagram : Generation Success
+Generating --> Error : Generation Failed
+
+DisplayingDiagram --> Ready : Continue Editing
+DisplayingDiagram --> Exporting : Export Request
+
+Exporting --> DisplayingDiagram : Export Complete
+Exporting --> Error : Export Failed
+
+Error --> Loading : Retry
+Error --> Ready : Recover
+
+note right of Ready
+  Default state when
+  application is ready
+  for user interaction
+end note
+
+note right of Generating
+  Processing PlantUML
+  code and generating
+  diagram image
+end note
+
+@enduml

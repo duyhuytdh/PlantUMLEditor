@@ -1,0 +1,51 @@
+services:
+  # Java PlantUML Server (Development)
+  java-server-dev:
+    build:
+      context: ./java-plantuml-server
+      dockerfile: Dockerfile.dev
+    container_name: plantuml-java-server-dev
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SERVER_PORT=8090
+      - JAVA_OPTS=-Xmx1g -Xms512m
+    volumes:
+      # Mount source code for hot reload (if needed)
+      - ./java-plantuml-server/src:/app/src:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/api/plantuml/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - plantuml-dev-network
+
+  # React Frontend (Development with hot reload)
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: plantuml-frontend-dev
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8090
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - /app/node_modules
+    depends_on:
+      java-server-dev:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - plantuml-dev-network
+
+networks:
+  plantuml-dev-network:
+    driver: bridge

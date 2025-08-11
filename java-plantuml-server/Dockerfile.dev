@@ -1,0 +1,35 @@
+# Ultra-simplified Dockerfile using pre-built JAR
+FROM openjdk:11-jre-slim
+
+# Install essential packages
+RUN apt-get update && \
+    apt-get install -y curl graphviz && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy the pre-built JAR file from local target directory
+COPY target/plantuml-server-1.0.0.jar app.jar
+
+# Create non-root user
+RUN useradd -r -s /bin/false plantuml && \
+    chown plantuml:plantuml /app/app.jar
+
+# Switch to non-root user
+USER plantuml
+
+# Expose port
+EXPOSE 8090
+
+# Simple health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8090/api/plantuml/health || exit 1
+
+# Run the application with optimized JVM settings
+ENTRYPOINT ["java", \
+    "-XX:+UseContainerSupport", \
+    "-XX:MaxRAMPercentage=75.0", \
+    "-XX:+UseG1GC", \
+    "-Djava.security.egd=file:/dev/./urandom", \
+    "-jar", "app.jar"]
